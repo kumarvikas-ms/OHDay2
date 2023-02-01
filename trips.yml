@@ -4,6 +4,7 @@ metadata:
   name: trips-deployment
   labels:
     app: trips
+  namespace: api
 spec:
   replicas: 2
   selector:
@@ -40,6 +41,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: trips
+  namespace: api
 spec:
   selector:
     app: trips

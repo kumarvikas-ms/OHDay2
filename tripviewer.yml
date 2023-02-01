@@ -4,6 +4,7 @@ metadata:
   name: tripviewer-deployment
   labels:
     app: tripviewer
+  namespace: api
 spec:
   replicas: 3
   selector:
@@ -25,14 +26,15 @@ spec:
                 port: 80
         env:
           - name: TRIPS_API_ENDPOINT
-            value: http://trips
+            value: http://trips.api
           - name: USERPROFILE_API_ENDPOINT
-            value: http://userprofile
+            value: http://userprofile.api
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: tripviewer
+  namespace: api
 spec:
   selector:
     app: tripviewer

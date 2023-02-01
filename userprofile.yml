@@ -4,6 +4,7 @@ metadata:
   name: userprofile-deployment
   labels:
     app: userprofile
+  namespace: api
 spec:
   replicas: 1
   selector:
@@ -40,6 +41,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: userprofile
+  namespace: api
 spec:
   selector:
     app: userprofile
