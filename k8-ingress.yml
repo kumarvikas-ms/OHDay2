@@ -41,6 +41,6 @@ spec:
        pathType: Prefix
        backend:
          service:
-           name: user
+           name: userprofile
            port:
              number: 80
