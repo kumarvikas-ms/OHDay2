@@ -1,0 +1,45 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-cpr
+  annotations:
+    kubernetes.io/ingress.class: azure/application-gateway
+spec:
+  rules:
+  - http:
+     paths:
+     - path: /
+       pathType: Prefix
+       backend:
+         service:
+           name: tripviewer
+           port:
+             number: 80
+     - path: /api/poi
+       pathType: Prefix
+       backend:
+         service:
+           name: poi
+           port:
+             number: 80
+     - path: /api/user-java
+       pathType: Prefix
+       backend:
+         service:
+           name: user-java
+           port:
+             number: 80
+     - path: /api/trips
+       pathType: Prefix
+       backend:
+         service:
+           name: trips
+           port:
+             number: 80
+     - path: /api/user
+       pathType: Prefix
+       backend:
+         service:
+           name: user
+           port:
+             number: 80
