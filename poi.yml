@@ -27,7 +27,7 @@ spec:
           - name: SQL_USER
             valueFrom:
               secretKeyRef:
-                name: azure-kvname-user-msi
+                name: username
                 key: username
                 optional: false
           - name: SQL_PASSWORD
