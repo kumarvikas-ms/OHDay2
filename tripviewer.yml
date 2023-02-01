@@ -4,7 +4,7 @@ metadata:
   name: tripviewer-deployment
   labels:
     app: tripviewer
-  namespace: api
+  namespace: web
 spec:
   replicas: 3
   selector:
@@ -34,7 +34,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: tripviewer
-  namespace: api
+  namespace: web
 spec:
   selector:
     app: tripviewer
