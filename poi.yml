@@ -24,27 +24,9 @@ spec:
                 path: /api/poi/healthcheck
                 port: 80
         env:
-          - name: SQL_USER
-            valueFrom:
-              secretKeyRef:
-                name: username
-                key: username
-                optional: false
-          - name: SQL_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: dbsecret
-                key: password
-                optional: false
-          - name: SQL_SERVER
-            valueFrom:
-              secretKeyRef:
-                name: dbsecret
-                key: server
-                optional: false
         volumeMounts:
         - name: secrets-store01-inline
-          mountPath: "/mnt/secrets-store"
+          mountPath: "/secrets"
           readOnly: true
       volumes:
         - name: secrets-store01-inline
