@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trips-deployment
+  labels:
+    app: trips
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: trips
+  template:
+    metadata:
+      labels:
+        app: trips
+    spec:
+      containers:
+      - name: trips
+        image: registryujx8519.azurecr.io/trips:vk
+        ports:
+        - containerPort: 80
+        livenessProbe:
+            httpGet:
+                path: /api/trips/healthcheck
+                port: 80
+        env:
+          - name: SQL_USER
+            valueFrom:
+              secretKeyRef:
+                name: dbsecret
+                key: username
+                optional: false
+          - name: SQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: dbsecret
+                key: password
+                optional: false
+          - name: SQL_SERVER
+            valueFrom:
+              secretKeyRef:
+                name: dbsecret
+                key: server
+                optional: false
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: trips
+spec:
+  selector:
+    app: trips
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

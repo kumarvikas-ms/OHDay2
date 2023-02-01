@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-java-deployment
+  labels:
+    app: user-java
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: user-java
+  template:
+    metadata:
+      labels:
+        app: user-java
+    spec:
+      containers:
+      - name: user-java
+        image: registryujx8519.azurecr.io/user-java:vk
+        livenessProbe:
+            httpGet:
+                path: /api/user-java/healthcheck
+                port: 80
+        ports:
+        - containerPort: 80
+        env:
+          - name: SQL_USER
+            valueFrom:
+              secretKeyRef:
+                name: dbsecret
+                key: username
+                optional: false
+          - name: SQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: dbsecret
+                key: password
+                optional: false
+          - name: SQL_SERVER
+            valueFrom:
+              secretKeyRef:
+                name: dbsecret
+                key: server
+                optional: false
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-java
+spec:
+  selector:
+    app: user-java
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer 
