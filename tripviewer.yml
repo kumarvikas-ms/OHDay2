@@ -19,10 +19,10 @@ spec:
         image: registryujx8519.azurecr.io/tripviewer:vk
         resources:
           requests:
-            memory: "400Mi"
+            memory: "256Mi"
             cpu: "250m"
           limits:
-            memory: "1Gi"
+            memory: "512Mi"
             cpu: "500m"
         ports:
         - containerPort: 80
