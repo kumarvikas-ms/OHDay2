@@ -66,5 +66,5 @@ spec:
     name: user-java-deployment
   minReplicas: 2
   maxReplicas: 10
-  targetCPUUtilizationPercentage: 50
+  targetCPUUtilizationPercentage: 75
 ---
