@@ -21,7 +21,7 @@ spec:
             httpGet:
                 path: /api/user-java/healthcheck
                 port: 80
-            initialDelaySeconds: 5
+            initialDelaySeconds: 30
         ports:
         - containerPort: 80
         env:
