@@ -18,6 +18,13 @@ spec:
       containers:
       - name: trips
         image: registryujx8519.azurecr.io/trips:vk
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
         ports:
         - containerPort: 80
         livenessProbe:
