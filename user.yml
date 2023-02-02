@@ -32,10 +32,10 @@ spec:
         resources:
           requests:
             memory: "512Mi"
-            cpu: "250m"
+            cpu: "750m"
           limits:
             memory: "1Gi"
-            cpu: "500m"
+            cpu: "750m"
       volumes:
         - name: secrets-store01-inline
           csi:
