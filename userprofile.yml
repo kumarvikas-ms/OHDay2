@@ -34,7 +34,7 @@ spec:
             cpu: "250m"
           limits:
             memory: "512Mi"
-            cpu: "500m"
+            cpu: "750m"
       volumes:
         - name: secrets-store01-inline
           csi:
